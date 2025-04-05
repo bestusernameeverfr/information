@@ -32,11 +32,12 @@
 
     <!-- Place the script here, just before the closing </body> tag -->
     <script>
-      // Add a listener for the Tally iframe form submission
+      // Wait for the iframe to load
       document.getElementById('tallyForm').addEventListener('load', function() {
         const iframe = document.getElementById('tallyForm');
         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
+        // Wait for the submit button click inside the iframe
         iframeDocument.addEventListener('submit', function() {
           // Redirect to your desired URL after submission
           window.location.href = 'https://sites.google.com/view/envisageai/home';
