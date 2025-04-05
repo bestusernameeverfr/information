@@ -1,17 +1,20 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>purchse</title>
+    <title>Purchase Image</title>
     <script async src="https://tally.so/widgets/embed.js"></script>
     <style type="text/css">
-      html, body {
+      html { margin: 0; height: 100%; overflow: hidden; }
+      
+      /* Apply gradient background with the image */
+      body {
         margin: 0;
         height: 100%;
-        overflow: hidden;
-        background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ymx1ZSUyMGFuZCUyMHB1cnBsZSUyMGdyYWRpZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80') no-repeat center center fixed;
+        background: linear-gradient(rgba(128, 0, 128, 0.6), rgba(0, 0, 255, 0.6)), url('https://wallpaperaccess.com/full/1092728.jpg');
         background-size: cover;
+        background-position: center;
       }
+
       iframe { 
         position: absolute; 
         top: 0; 
@@ -23,16 +26,19 @@
     </style>
   </head>
   <body>
-    <iframe id="tallyIframe" data-tally-src="https://tally.so/r/w7Ekaz?transparentBackground=1" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="purchase"></iframe>
+    <iframe id="tallyForm" data-tally-src="https://tally.so/r/w7Ekaz?transparentBackground=1" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Purchase Image"></iframe>
 
+    <!-- Place the script here, just before the closing </body> tag -->
     <script>
-      // Wait for the Tally widget to load and detect the form submission
-      window.addEventListener('message', function(event) {
-        if (event.origin === "https://tally.so" && event.data.type === "form-submitted") {
-          setTimeout(function() {
-            window.close();  // Close the window after 3 seconds
-          }, 3000); // 3-second delay before closing
-        }
+      // Add a listener for the Tally iframe form submission
+      document.getElementById('tallyForm').addEventListener('load', function() {
+        const iframe = document.getElementById('tallyForm');
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        iframeDocument.addEventListener('submit', function() {
+          // Redirect to your desired URL after submission
+          window.location.href = 'https://sites.google.com/view/envisageai/home';
+        });
       });
     </script>
   </body>
